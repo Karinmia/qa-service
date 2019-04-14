@@ -1,0 +1,13 @@
+*.pyc
+*~
+__pycache__
+.pytest_cache/
+.idea
+Dockerfile
+docker-compose.yml
+
+.env
+.envs/*
+!.envs/.local/
+
+diploma/media/
