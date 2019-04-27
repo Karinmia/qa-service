@@ -11,15 +11,15 @@ class Task(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
     description = models.CharField(max_length=500)
-    created_at = models.DateTimeField(editable=False)
-    updated_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        """ On save, update timestamps """
-        if not self.id:
-            self.created_at = timezone.now()
-        self.updated_at = timezone.now()
-        return super(Task, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     """ On save, update timestamps """
+    #     if not self.id:
+    #         self.created_at = timezone.now()
+    #     self.updated_at = timezone.now()
+    #     return super(Task, self).save(*args, **kwargs)
