@@ -1,19 +1,20 @@
 {% extends 'tasks/base.html' %}
 
 {% block content %}
-<h1>TASKS</h1>
 <div class="list-group">
     {% if not tasks %}
         <p>Sorry, no tasks available.</p>
     {% else %}
         {% for task in tasks %}
-        <a href="#" class="list-group-item">
-            <div class="task">
-                <h4 class="task-title">{{ task.title }}</h4>
-                <p class="task-text">{{ task.author }}</p>
-                <p class="date">
-                    {{ task.publish_date|date:"Y M d" }}
-                </p>
+        <a href="/" class="list-group-item stretched-link task">
+            <div class="row">
+                <div class="col">
+                    <h4 class="task-title">{{ task.title }}</h4>
+                    <p class="task-text">{{ task.author }}</p>
+                    <p class="date">
+                        {{ task.publish_date|date:"Y M d" }}
+                    </p>
+                </div>
             </div>
         </a>
         {% endfor %}

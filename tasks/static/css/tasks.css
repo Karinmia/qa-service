@@ -1,13 +1,7 @@
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    background-color: #17a2b8;
-    text-align: center;
-}
-
-.footer p {
-    margin: 20px 0 20px 0;
+.task {
+    margin-left: 60px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
