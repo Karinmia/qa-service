@@ -21,4 +21,121 @@
     {% endif %}
 </div>
 
+<!-- CHOOSE PLATFROM MODAL -->
+<div class="d-none modal-data" data-for="new_bot_btn">
+    <div data-type="header">
+        <h4 class="modal-title">Choose platform:</h4>
+    </div>
+    <div data-type="body">
+        <button type="button" class="btn btn-outline-primary open-modal" id="newTelegramBot">Telegram</button>
+        <button type="button" class="btn btn-outline-primary open-modal" id="newFacebookBot">Facebook</button>
+    </div>
+    <div data-type="footer">
+
+    </div>
+</div>
+
+<!-- CREATE TELEGRAM BOT MODAL -->
+<div class="d-none modal-data" data-for="newTelegramBot">
+    <div data-type="header">
+        <h3>Create Task</h3>
+    </div>
+    <div data-type="body">
+        <form id="form-create-new-bot-telegram" class='post-form' method='POST' action='/tasks/edit/'>
+            {% csrf_token %}
+            {{ form_create_new_bot.as_p }}
+            <input type="text" name="platform" value="telegram"  style="display: none;">
+            <input type="text" name="action" value="create" style="display: none;">
+            <button class='btn btn-primary' value='Submit' type='submit'>Save</button>
+            <button class='btn btn-primary' data-dismiss='modal'>Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL WINDOW -->
+<div class="modal" id="modal-window" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function ($) {
+    'use strict';
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            let cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    let csrftoken = getCookie('csrftoken');
+
+    $(".open-modal").on('click', function() {
+        if (!$(this).attr('id') && !$(this).attr('data-modal_id')) {
+            return;
+        }
+
+        let $modal = $('#modal-window');
+
+        let id = $(this).attr('id') ? $(this).attr('id') : $(this).attr('data-modal_id');
+        let bot_id = $(this).attr('data-id') ? $(this).attr('data-id') : -1;
+
+        if (bot_id != -1) {
+            $modal.attr('data-bot_id', bot_id);
+        } else {
+            $modal.attr('data-bot_id', '');
+        }
+
+        if ($modal.length) {
+            let $data = $('.modal-data[data-for="' + id + '"]');
+
+            if ($data.length) {
+                let $data_header = $data.find('[data-type="header"]');
+                let $data_body = $data.find('[data-type="body"]');
+                let $data_footer = $data.find('[data-type="footer"]');
+
+            let $modal_header = $modal.find('.modal-header');
+                let $modal_body = $modal.find('.modal-body');
+                let $modal_footer = $modal.find('.modal-footer');
+
+                if ($data_header.length && $modal_header.length) {
+                    $modal_header.html('');
+                    $data_header.contents().clone(true).appendTo($modal_header);
+                }
+
+                if ($data_body.length && $modal_body.length) {
+                    $modal_body.html('');
+                    $data_body.contents().clone(true).appendTo($modal_body);
+                }
+
+                if ($data_header.length && $modal_header.length) {
+                    $modal_footer.html('');
+                    $data_footer.contents().clone(true).appendTo($modal_footer);
+                }
+            }
+
+            $modal.modal('show');
+        }
+    // $("#choosePlatformModal").modal({show: true});
+});
+</script>
+
 {% endblock %}
