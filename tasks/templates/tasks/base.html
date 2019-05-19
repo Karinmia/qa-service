@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QA Service</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -18,6 +19,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'assets/js/bootstrap.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.js' %}"></script>
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 </head>
 
 <body>
@@ -35,7 +40,7 @@
                 <a href="/">
                     <i class='fab fa-trello'></i> Tasks
                 </a>
-                <button class="btn btn-success btn-sm float-right" style='font-size:22px; margin-top: 4px; margin-right: 6px;'>
+                <button class="create-task btn btn-primary btn-sm float-right" type="button" style='font-size:22px; margin-top: 4px; margin-right: 6px;'>
                     <i class='fas fa-plus'></i>
                 </button>
             </li>
@@ -56,6 +61,11 @@
             </li>
         </ul>
     </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
@@ -68,5 +78,15 @@
 <!-- /#wrapper -->
 
 </body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $(".create-task").modalForm({
+        formURL: "{% url 'create_task' %}"
+    });
+
+});
+</script>
 
 </html>

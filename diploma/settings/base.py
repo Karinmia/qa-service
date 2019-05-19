@@ -31,11 +31,12 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'crispy_forms',
+    'bootstrap_modal_forms',
 ]
 LOCAL_APPS = [
     'tasks',
     'documentation',
-    'users'
+    'users',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

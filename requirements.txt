@@ -4,4 +4,4 @@ Django>=2.0
 
 django-crispy-forms
 
-django-bootstrap-modal-forms
+django_bootstrap-modal-forms
