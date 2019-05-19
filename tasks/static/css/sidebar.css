@@ -81,11 +81,10 @@ body {
     text-indent: 6px;
     line-height: 40px;
     font-size: 24px;
-    /*margin-left: -6px;*/
+    display: block;
 }
 
 .sidebar-nav li a {
-    display: block;
     text-decoration: none;
     color: whitesmoke;
 }
