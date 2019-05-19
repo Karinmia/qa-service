@@ -7,6 +7,9 @@
     {% else %}
         {% for task in tasks %}
         <div class="row task list-group-item">
+<!--            <div class="col form-check-inline">-->
+<!--                <input type="checkbox" class="form-check-input" name="vehicle1" value="something">-->
+<!--            </div>-->
             <div class="col-11">
                 <a href="/" class="stretched-link">
                     <h4 class="task-title">{{ task.title }}</h4>
@@ -16,9 +19,9 @@
                     </p>
                 </a>
             </div>
-            <div class="col-1">
-                <button type="button" class="btn btn-outline-danger btn-sm>
-                    <i class="fa fa-trash" aria-hidden="true"></i>Delete
+            <div class="col">
+                <button class="btn btn-outline-danger btn-sm" style='font-size:24px'>
+                    <i class='far fa-trash-alt'></i>
                 </button>
             </div>
         </div>
