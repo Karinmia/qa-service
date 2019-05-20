@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load widget_tweaks %}
 <html>
 
 <head>
@@ -59,7 +59,7 @@
                 <a href="/profile">
                     <i class='far fa-user'></i> Profile
                 </a></br>
-                <button class="btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 80px; margin-top: 6px;">
+                <button class="login btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 80px; margin-top: 6px;">
                     Log In
                 </button>
                 <button class="signup btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 5px; margin-top: 6px;">
@@ -90,6 +90,8 @@
 <script type="text/javascript">
   $(function () {
     $(".signup").modalForm({formURL: "{% url 'create_user' %}"});
+
+    $(".login").modalForm({formURL: "{% url 'login_user' %}"});
 
     $(".create-task").modalForm({formURL: "{% url 'create_task' %}"});
 

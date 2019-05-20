@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from .forms import UserCreationForm
-from bootstrap_modal_forms.generic import (BSModalCreateView,
-                                           BSModalDeleteView)
+from .forms import CustomCreationForm, CustomAuthenticationForm
+from bootstrap_modal_forms.generic import BSModalCreateView, BSModalLoginView
+
 from .models import Profile
 
 
@@ -15,5 +15,11 @@ def get_profile(request):
 
 class ProfileCreateView(BSModalCreateView):
     template_name = 'users/create_user.html'
-    form_class = UserCreationForm
-    success_url = reverse_lazy(get_profile)
+    form_class = CustomCreationForm
+    success_url = reverse_lazy('get_profile')
+
+
+class CustomLoginView(BSModalLoginView):
+    authentication_form = CustomAuthenticationForm
+    template_name = 'users/auth.html'
+    extra_context = dict(success_url=reverse_lazy('get_profile'))

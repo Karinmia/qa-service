@@ -28,10 +28,12 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 THIRD_PARTY_APPS = [
     'crispy_forms',
     'bootstrap_modal_forms',
+    'widget_tweaks',
 ]
 LOCAL_APPS = [
     'tasks',
