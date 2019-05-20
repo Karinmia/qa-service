@@ -5,3 +5,5 @@ Django>=2.0
 django-crispy-forms
 
 django_bootstrap-modal-forms
+
+django-widget-tweaks

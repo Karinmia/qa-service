@@ -1,10 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from .forms import TaskForm
-from .models import Task
-from bootstrap_modal_forms.generic import BSModalCreateView
-
+from bootstrap_modal_forms.generic import (BSModalCreateView,
+                                           BSModalDeleteView)
 from .models import Task
 
 
@@ -17,4 +15,11 @@ def task_list(request):
 class TaskCreateView(BSModalCreateView):
     template_name = 'tasks/create_task.html'
     form_class = TaskForm
-    success_url = reverse_lazy('task_list')
+    success_url = reverse_lazy(task_list)
+
+
+class TaskDeleteView(BSModalDeleteView):
+    model = Task
+    template_name = 'tasks/delete_task.html'
+    success_message = 'task_list'
+    success_url = reverse_lazy(task_list)
