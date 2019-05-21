@@ -11,7 +11,7 @@
 }
 
 .task:hover {
-    border: 3px royalblue solid;
+    border: 3px #337ab7 solid;
 }
 
 .task-title {
