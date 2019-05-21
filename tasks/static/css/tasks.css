@@ -1,3 +1,7 @@
+.list-group-item {
+    display: flex;
+}
+
 .task {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -6,6 +10,16 @@
     max-width: 96%;
 }
 
-.list-group-item {
-    display: flex;
+.task:hover {
+    border: 3px royalblue solid;
+}
+
+.task-title {
+    font-weight: 600;
+}
+
+.task-author {
+    color: #64687a;
+    font-size: 20px;
+    font-weight: 300;
 }

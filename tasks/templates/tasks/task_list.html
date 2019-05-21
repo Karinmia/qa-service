@@ -1,4 +1,5 @@
 {% extends 'tasks/base.html' %}
+
 {% block content %}
 <div class="list-group">
     {% if not tasks %}
@@ -6,17 +7,18 @@
     {% else %}
         {% for task in tasks %}
         <div class="row task list-group-item">
-            <div class="col-11">
-                <a href="/" class="stretched-link">
-                    <h4 class="task-title">{{ task.title }}</h4>
-                    <p class="task-text">{{ task.author }}</p>
-                    <p class="date">
-                        {{ task.publish_date|date:"Y M d" }}
-                    </p>
-                </a>
+            <div class="col-10 task-content">
+                <h4 class="task-title">{{ task.title }}
+                    <span class="task-author"> {{ task.author }}</span>
+                </h4>
+                <p class="task-description">{{ task.description }}</p>
+                <p class="date">
+                    {{ task.created_at|date:"Y M d" }}
+                </p>
+                <a href="/" class="stretched-link"></a>
             </div>
-            <div class="col">
-                <button class="delete-task btn btn-outline-danger btn-sm" type="button" style='font-size:24px' data-id="{% url 'delete_task' task.pk %}">
+            <div class="col" style="text-align: right; padding: 0;">
+                <button class="delete-task btn btn-outline-danger btn-sm" type="button" style='font-size:24px;' data-id="{% url 'delete_task' task.pk %}">
                     <i class='far fa-trash-alt'></i>
                 </button>
             </div>
