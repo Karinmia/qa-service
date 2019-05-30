@@ -8,10 +8,12 @@
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
     max-width: 96%;
+    padding: 16px;
+    margin: 1px;
 }
 
 .task:hover {
-    border: 3px #337ab7 solid;
+    border: 2px #337ab7 solid;
 }
 
 .task-title {
@@ -22,4 +24,16 @@
     color: #64687a;
     font-size: 20px;
     font-weight: 300;
+}
+
+.jira-ticket {
+    font-size: 22px;
+    font-weight: 400;
+    color: #337ab7;
+}
+
+.confluence-link {
+    font-size: 22px;
+    font-weight: 400;
+    color: #337ab7;
 }

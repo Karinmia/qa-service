@@ -1,7 +1,7 @@
 {% extends 'tasks/base.html' %}
 
 {% block content %}
-<div class="list-group">
+<div class="list-group" id="tasks">
     {% if not tasks %}
         <p>Sorry, no tasks available.</p>
     {% else %}
@@ -9,13 +9,17 @@
         <div class="row task list-group-item">
             <div class="col-10 task-content">
                 <h4 class="task-title">{{ task.title }}
-                    <span class="task-author"> {{ task.author }}</span>
+<!--                    <span class="jira-1"> {{ task.author }}</span>-->
                 </h4>
-                <p class="task-description">{{ task.description }}</p>
-                <p class="date">
-                    {{ task.created_at|date:"Y M d" }}
-                </p>
-                <a href="/" class="stretched-link"></a>
+                <a href="/" class="stretched-link" data-toggle="collapse" data-parent="#tasks" data-target="#demo"></a>
+                <div id="demo" class="collapse">
+                    <p class="task-description">{{ task.description }}</p>
+    <!--                <p class="date">-->
+    <!--                    {{ task.created_at|date:"Y M d" }}-->
+    <!--                </p>-->
+                    <a href="/" class="jira-ticket">Jira</a>
+                    <a href="/" class="confluence-link">Docs</a>
+                </div>
             </div>
             <div class="col" style="text-align: right; padding: 0;">
                 <button class="delete-task btn btn-outline-danger btn-sm" type="button" style='font-size:24px;' data-id="{% url 'delete_task' task.pk %}">
@@ -26,4 +30,5 @@
         {% endfor %}
     {% endif %}
 </div>
+
 {% endblock %}
