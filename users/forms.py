@@ -21,3 +21,4 @@ class CustomAuthenticationForm(AuthenticationForm):
         fields = ['username',
                   'password'
                   ]
+
