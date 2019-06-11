@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QA Service</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -21,8 +20,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <script src="{% static 'assets/js/bootstrap.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.js' %}"></script>
     <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 </head>
 
@@ -39,20 +36,20 @@
             </li>
             <li>
                 <a href="/">
-                    <i class='fab fa-trello'></i> Tasks
+                    <i class='fab fa-trello'></i> <span class="tab-name"> Tasks</span>
                 </a>
-                <button class="create-task btn btn-primary btn-sm float-right" type="button" style='font-size:22px; margin-top: 4px; margin-right: 6px;'>
+                <button class="create-task btn btn-success btn-sm float-right" type="button" style='font-size:22px; margin-top: 4px; margin-right: 6px;'>
                     <i class='fas fa-plus'></i>
                 </button>
             </li>
             <li>
                 <a href="/documentation">
-                    <i class='fab fa-confluence'></i> Documentation
+                    <i class='fab fa-confluence'></i> <span class="tab-name">Docs</span>
                 </a>
             </li>
             <li>
                 <a href="/">
-                    <i class='fab fa-jira'></i> Jira
+                    <i class='fab fa-jira'></i> <span class="tab-name">Jira</span>
                 </a>
             </li>
             <li>
@@ -67,7 +64,14 @@
                 <button class="login btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 80px; margin-top: 6px;">
                     Log In
                 </button>
-                <button class="signup btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 5px; margin-top: 6px;">
+                    <i class='far fa-user'></i> <span class="tab-name">Profile</span>
+                </a>
+            </li>
+            <li>
+                <button class="login btn btn-success btn-sm" type="button">
+                    Sign In
+                </button>
+                <button class="login signup btn btn-success btn-sm" type="button">
                     Sign Up
                 </button>
                 {% endif %}

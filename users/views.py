@@ -7,7 +7,7 @@ from .models import Profile
 
 
 def get_profile(request):
-    # profile = Profile.objects.get(id=request.POST['id'])
+    #profile = Profile.objects.get(id=request.POST['id'])
     profile = Profile.objects.all().first()
 
     return render(request, 'users/profile.html', {'profile': profile})
@@ -23,6 +23,7 @@ class CustomLoginView(BSModalLoginView):
     authentication_form = CustomAuthenticationForm
     template_name = 'users/auth.html'
     extra_context = dict(success_url=reverse_lazy('get_profile'))
+
 
 def logout(request):
     auth_logout(request)

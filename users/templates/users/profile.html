@@ -3,5 +3,7 @@
 {% block content %}
 <h3>
     Hello, {{user.username}}
+
 </h3>
+{% csrf_token %}
 {% endblock %}
