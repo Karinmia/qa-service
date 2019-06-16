@@ -14,8 +14,12 @@
     <!--                <p class="date">-->
     <!--                    {{ task.created_at|date:"Y M d" }}-->
     <!--                </p>-->
-                    <a href="/j" class="integration-btn jira-ticket">Jira</a>
-                    <a href="/c" class="integration-btn confluence-link">Docs</a>
+                    <button type="button" class="integration-btn btn btn-outline-info jira-ticket" data-id="{{ task.id }}" data-modal_id="jiraModal">
+                        Jira
+                    </button>
+                    <button type="button" class="integration-btn btn btn-outline-info confluence-link" data-id="{{ task.id }}" data-modal_id="confluenceModal" style="margin-left: 12px;">
+                        Docs
+                    </button>
                 </div>
             </div>
             <div class="col" style="text-align: right; padding: 0;">

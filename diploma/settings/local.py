@@ -9,3 +9,7 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
 ]
+
+JIRA_LOGIN = 'ilyina.maria.dm@gmail.com'
+JIRA_PASSWORD = 'unicorns2552'
+JIRA_BASE_URL = ''

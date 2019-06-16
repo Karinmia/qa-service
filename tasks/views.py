@@ -17,7 +17,7 @@ def task_list(request):
 #     template_name = 'tasks/create_task.html'
 #     form_class = TaskForm
 #     success_url = reverse_lazy(task_list)
-#
+
 
 class TaskUpdateView(CreateView):
     model = Task

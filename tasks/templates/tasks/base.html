@@ -55,25 +55,21 @@
             <li>
                 <a href="/profile">
                     <i class='far fa-user'></i> Profile
-                    {% if request.user.is_authenticated  %}
-                    <button  class="logout btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 80px; margin-top: 6px;">
-                    Log Out
-                </button>
-                    {% else %}
-                </a></br>
-                <button class="login btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 80px; margin-top: 6px;">
-                    Log In
-                </button>
-                    <i class='far fa-user'></i> <span class="tab-name">Profile</span>
                 </a>
             </li>
+
             <li>
-                <button class="login btn btn-success btn-sm" type="button">
-                    Sign In
-                </button>
-                <button class="login signup btn btn-success btn-sm" type="button">
-                    Sign Up
-                </button>
+                {% if request.user.is_authenticated  %}
+                    <button  class="logout btn btn-danger btn-sm" type="button">
+                        Log Out
+                    </button>
+                {% else %}
+                    <button class="login btn btn-success btn-sm" type="button">
+                        Sign In
+                    </button>
+                    <button class="login signup btn btn-success btn-sm" type="button">
+                        Sign Up
+                    </button>
                 {% endif %}
             </li>
         </ul>

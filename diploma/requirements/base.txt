@@ -1,9 +1,8 @@
+requests
 psycopg2-binary
 
 Django>=2.0
 
 django-crispy-forms
-
 django-bootstrap-modal-forms
-
 django-widget-tweaks
