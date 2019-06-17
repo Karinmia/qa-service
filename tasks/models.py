@@ -13,6 +13,7 @@ class Task(models.Model):
     description = models.CharField(max_length=500, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)
+    done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

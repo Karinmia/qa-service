@@ -4,7 +4,13 @@
 {% block content %}
 <div class="list-group" id="tasks">
     {% for task in tasks %}
-        <div class="row task list-group-item">
+        <div class="row task list-group-item" {% if task.done == True %} style="background: rgb(100, 255, 0, 0.5)" {% endif %}>
+            <button class="done-task btn btn-outline-success btn-sm" type="submit" style='font-size:24px;' data-id="{% url 'done_task' task.pk %}" data-toggle="tooltip" data-placement="left" title="Check task">
+                    <i class='fas fa-check'></i>
+                </button>    
+            <button class="update-task btn btn-outline-success btn-sm" type="submit" style='font-size:24px;' data-id="{% url 'update_task' task.pk %}" data-toggle="tooltip" data-placement="left" title="Update task">
+                    <i class='fas fa-pencil-alt '></i>
+                </button>
             <div class="col-10 task-content">
                 <h4 id="{{ task.id }}" class="task-title expand" style="cursor: pointer;">{{ task.title }}</h4>
                 <div id="expandable_{{ task.id }}" class="expandable-content" style="display: none;">

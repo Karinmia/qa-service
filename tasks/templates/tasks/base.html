@@ -56,15 +56,9 @@
             <li>
                 <a href="/profile">
                     <i class='far fa-user'></i> <span class="tab-name" style="margin-left:8px">Profile</span>
-<<<<<<< HEAD
-                    <button  class="logout btn btn-primary btn-sm float-right" type="submit" name="button" style="margin-top:6px; margin-right:50px">
+                    <button  class="logout btn btn-danger btn-sm float-right" type="submit" name="button" style="margin-top:6px; margin-right:50px">
                     Log Out </button>
-=======
->>>>>>> d301a4a657bfb0b9a802f65294c53d3871841dce
                 </a>
-                <button class="logout btn btn-danger btn-sm float-right" type="button"style="font-size:18px; margin-right:20px">
-                    Log Out
-                </button>
             </li>
         </ul>
     </div>
@@ -104,7 +98,7 @@
 
     $(".login").modalForm({formURL: "{% url 'login_user' %}"});
 
-     $(".logout").modalForm({formURL: "{% url 'logout' %}"});
+    $(".logout").modalForm({formURL: "{% url 'logout' %}"});
 
     $(".create-task").modalForm({formURL: "{% url 'create_task' %}"});
 
@@ -112,5 +106,12 @@
       $(this).modalForm({formURL: $(this).data('id')});
     });
 
+    $(".done-task").each(function () {
+      $(this).modalForm({formURL: $(this).data('id')});
+    });
+
+     $(".update-task").each(function () {
+      $(this).modalForm({formURL: $(this).data('id')});
+    });
   });
 </script>
