@@ -11,6 +11,8 @@ class Task(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     description = models.CharField(max_length=500, blank=True)
+    jira_ticket = models.CharField(max_length=100, blank=True)
+    confluence_page = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)
     done = models.BooleanField(default=False)

@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
@@ -30,7 +30,7 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand">
+            <li class="sidebar-brand" style="font-size: 24px;">
                 <a href="/">
                     QA Service
                 </a>
@@ -39,7 +39,8 @@
                 <a href="/">
                     <i class='fab fa-trello'></i> <span class="tab-name" style="margin-left:8px"> Tasks</span>
                 </a>
-                <button class="create-task btn btn-success btn-sm float-right" type="button" style="font-size:22px; margin-top: 6px; margin-right: 20px;">
+                <button id="new-task-btn" class="create-task btn btn-success btn-sm float-right open-modal"
+                        type="button" style="font-size:22px; margin-top: 6px; margin-right: 20px;">
                     <i class='fas fa-plus'></i>
                 </button>
             </li>
@@ -56,9 +57,10 @@
             <li>
                 <a href="/profile">
                     <i class='far fa-user'></i> <span class="tab-name" style="margin-left:8px">Profile</span>
-                    <button  class="logout btn btn-danger btn-sm float-right" type="submit" name="button" style="margin-top:6px; margin-right:50px">
-                    Log Out </button>
                 </a>
+                <button class="logout btn btn-danger btn-sm float-right" type="button" style="font-size:18px; margin-right:20px">
+                    Log Out
+                </button>
             </li>
         </ul>
     </div>
@@ -71,10 +73,10 @@
 {% else %}
 <link rel="stylesheet" href="{% static 'css/auth.css' %}">
 {% csrf_token %}
+    <h1>QA Service</h1>
     <div class="auth">
-        </br>
-        <h3 class="authtext">Please sign in or sign up to continue </h3></br>
-        <div class="authbutton">
+        <h3 class="auth-text">Please sign in or sign up to continue </h3></br>
+        <div class="auth-button">
             <button class="login btn btn-success btn-sm" type="button"> Sign In </button></br>
             <button class="login signup btn btn-success btn-sm" type="button" > Sign Up </button>
         </div>
@@ -82,12 +84,81 @@
 {% endif %}
 
 <!-- /#page-content-wrapper -->
+
 <div class="modal fade" tabindex="-1" role="dialog" id="modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content"></div>
     </div>
 </div>
 <!-- /#wrapper -->
+
+<!--&lt;!&ndash; CHOOSE PLATFROM MODAL &ndash;&gt;-->
+<!--<div class="d-none modal-data" data-for="new-task-btn">-->
+<!--    {% load widget_tweaks %}-->
+<!--    <div data-type="header">-->
+<!--        <h3 class="modal-title">Create task</h3>-->
+<!--    </div>-->
+<!--    <div data-type="body">-->
+<!--        <form method="post" action="">-->
+<!--            {% csrf_token %}-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title">Create new Task</h5>-->
+<!--            </div>-->
+
+<!--            <div class="modal-body">-->
+<!--                {% for field in form %}-->
+<!--                <div class="form-group{% if field.errors %} invalid{% endif %}">-->
+<!--                    <label for{{ field.id_for_label }}>{{ field.label }}</label>-->
+<!--                    {{ field }}-->
+<!--                    {% for error in field.errors %}-->
+<!--                    <p class="help-block">{{ error }}</p>-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="submit-btn btn btn-success" value='Submit'>Create</button>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <div data-type="footer">-->
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; CREATE TELEGRAM BOT MODAL &ndash;&gt;-->
+<!--<div class="d-none modal-data" data-for="newTelegramBot">-->
+<!--    <div data-type="header">-->
+<!--        <h3>Create Bot</h3>-->
+<!--    </div>-->
+<!--    <div data-type="body">-->
+<!--        <form id="form-create-new-bot-telegram" class='post-form' method='POST' action='/bots/edit/'>-->
+<!--            {% csrf_token %}-->
+<!--            {{ form_create_new_bot.as_p }}-->
+<!--            <input type="text" name="platform" value="telegram"  style="display: none;">-->
+<!--            <input type="text" name="action" value="create" style="display: none;">-->
+<!--            <button class='btn btn-primary' value='Submit' type='submit'>Save</button>-->
+<!--            <button class='btn btn-primary' data-dismiss='modal'>Cancel</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; MODAL WINDOW &ndash;&gt;-->
+<!--<div class="modal" id="modal-window" role="dialog" aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 </body>
 
 </html>
@@ -106,12 +177,13 @@
       $(this).modalForm({formURL: $(this).data('id')});
     });
 
+    $(".update-task").each(function () {
+      $(this).modalForm({formURL: $(this).data('id')});
+    });
+
     $(".done-task").each(function () {
       $(this).modalForm({formURL: $(this).data('id')});
     });
 
-     $(".update-task").each(function () {
-      $(this).modalForm({formURL: $(this).data('id')});
-    });
   });
 </script>

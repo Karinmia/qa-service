@@ -8,9 +8,7 @@
             <button class="done-task btn btn-outline-success btn-sm" type="submit" style='font-size:24px;' data-id="{% url 'done_task' task.pk %}" data-toggle="tooltip" data-placement="left" title="Check task">
                     <i class='fas fa-check'></i>
                 </button>    
-            <button class="update-task btn btn-outline-success btn-sm" type="submit" style='font-size:24px;' data-id="{% url 'update_task' task.pk %}" data-toggle="tooltip" data-placement="left" title="Update task">
-                    <i class='fas fa-pencil-alt '></i>
-                </button>
+
             <div class="col-10 task-content">
                 <h4 id="{{ task.id }}" class="task-title expand" style="cursor: pointer;">{{ task.title }}</h4>
                 <div id="expandable_{{ task.id }}" class="expandable-content" style="display: none;">
@@ -18,15 +16,24 @@
     <!--                <p class="date">-->
     <!--                    {{ task.created_at|date:"Y M d" }}-->
     <!--                </p>-->
-                    <button type="button" class="integration-btn btn btn-outline-info jira-ticket" data-id="{{ task.id }}" data-modal_id="jiraModal">
-                        Jira
-                    </button>
-                    <button type="button" class="integration-btn btn btn-outline-info confluence-link" data-id="{{ task.id }}" data-modal_id="confluenceModal" style="margin-left: 12px;">
-                        Docs
-                    </button>
+                    <span>
+                        Jira ticket
+                    </span>
+                    <span style="margin-left: 40px;">
+                        Confluence docs page
+                    </span>
+<!--                    <button type="button" class="integration-btn btn btn-outline-info jira-ticket" data-id="{{ task.id }}" data-modal_id="jiraModal">-->
+<!--                        Jira-->
+<!--                    </button>-->
+<!--                    <button type="button" class="integration-btn btn btn-outline-info confluence-link" data-id="{{ task.id }}" data-modal_id="confluenceModal" style="margin-left: 12px;">-->
+<!--                        Docs-->
+<!--                    </button>-->
                 </div>
             </div>
             <div class="col" style="text-align: right; padding: 0;">
+                <button class="update-task btn btn-outline-success btn-sm" type="submit" style='font-size:24px;' data-id="{% url 'update_task' task.pk %}" data-toggle="tooltip" data-placement="left" title="Update task">
+                    <i class='fas fa-pencil-alt '></i>
+                </button>
                 <button class="delete-task btn btn-outline-danger btn-sm" type="button" style='font-size:24px;'
                         data-id="{% url 'delete_task' task.pk %}"
                         data-toggle="popover"
