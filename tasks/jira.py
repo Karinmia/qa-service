@@ -24,7 +24,7 @@ class JiraClient:
             },
             'summary': summary,
             'description': desc,
-            'issuetype': {
+            'issue_type': {
                 'name': issue_type
             }
         }}

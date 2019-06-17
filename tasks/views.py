@@ -7,7 +7,7 @@ from .models import Task
 
 
 def task_list(request):
-    tasks = Task.objects.all().order_by('-created_at')
+    tasks = Task.objects.filter(author=request.user).order_by('-created_at')
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
 

@@ -3,7 +3,6 @@
 {% block content %}
 <div class="list-group" id="tasks">
     {% for task in tasks %}
-        {% if task.author == request.user %}
         <div class="row task list-group-item">
             <div class="col-10 task-content">
                 <h4 id="{{ task.id }}" class="task-title expand" style="cursor: pointer;">{{ task.title }}</h4>
@@ -26,7 +25,6 @@
                 </button>
             </div>
         </div>
-    {% endif %}
     {% endfor %}
 </div>
 

@@ -1,10 +1,11 @@
 .auth {
     color: white;
     background: #337ab7;
-    width: 300px;
-    height: 400px;
-    margin: 100px 100px 100px 550px;
-    border-radius:25px 25px 25px 25px;
+    max-width: 400px;
+    max-height: 300px;
+    margin: auto;
+    margin-top: 200px;
+    border-radius: 25px;
 }
 
 .authtext{
@@ -14,7 +15,7 @@
 
 .authbutton{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
 }
