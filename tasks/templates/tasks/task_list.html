@@ -27,7 +27,12 @@
                 </div>
             </div>
             <div class="col" style="text-align: right; padding: 0;">
-                <button class="delete-task btn btn-outline-danger btn-sm" type="button" style='font-size:24px;' data-id="{% url 'delete_task' task.pk %}" data-toggle="tooltip" data-placement="left" title="Delete this task">
+                <button class="delete-task btn btn-outline-danger btn-sm" type="button" style='font-size:24px;'
+                        data-id="{% url 'delete_task' task.pk %}"
+                        data-toggle="popover"
+                        data-trigger="hover"
+                        data-placement="left"
+                        data-content="Delete this task">
                     <i class='far fa-trash-alt'></i>
                 </button>
             </div>
@@ -36,11 +41,16 @@
 </div>
 
 <script>
-    $('.expand').click(function(){
-        let target_id = $(this).attr('id');
-        let content_id = '#expandable_'.concat(target_id);
-        $(content_id).slideToggle('fast');
-    });
+$('.expand').click(function(){
+    let target_id = $(this).attr('id');
+    let content_id = '#expandable_'.concat(target_id);
+    $(content_id).slideToggle('fast');
+});
+
+// Initialize popover component
+$(function () {
+  $('[data-toggle="popover"]').popover()
+});
 </script>
 
 {% endblock %}
