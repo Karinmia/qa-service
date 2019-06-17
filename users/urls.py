@@ -7,5 +7,6 @@ urlpatterns = [
     path('login/', views.CustomLoginView.as_view(), name='login_user'),
     path('logout/', views.logout, name='logout'),
     path('edit/', views.profile_edit, name='profile_edit'),
+    path('chp/', views.change_password, name='change_password'),
 
 ]

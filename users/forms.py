@@ -29,3 +29,10 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('jira_login', 'jira_password')
+
+
+class ChangePass(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('password',
+                  )
