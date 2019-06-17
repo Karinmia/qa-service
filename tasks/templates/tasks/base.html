@@ -1,5 +1,6 @@
 {% load static %}
 {% load widget_tweaks %}
+
 <html>
 
 <head>
@@ -11,6 +12,7 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
           crossorigin="anonymous"
@@ -24,7 +26,7 @@
 </head>
 
 <body>
-
+{% if request.user.is_authenticated %}
 <div id="wrapper">
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
@@ -36,65 +38,58 @@
             </li>
             <li>
                 <a href="/">
-                    <i class='fab fa-trello'></i> <span class="tab-name"> Tasks</span>
+                    <i class='fab fa-trello'></i> <span class="tab-name" style="margin-left:8px"> Tasks</span>
                 </a>
-                <button class="create-task btn btn-success btn-sm float-right" type="button" style='font-size:22px; margin-top: 4px; margin-right: 6px;'>
+                <button class="create-task btn btn-success btn-sm float-right" type="button" style='font-size:22px; margin-top: 8px; margin-right: 90px;'>
                     <i class='fas fa-plus'></i>
                 </button>
             </li>
             <li>
                 <a href="/documentation">
-                    <i class='fab fa-confluence'></i> <span class="tab-name">Docs</span>
+                    <i class='fab fa-confluence'></i> <span class="tab-name" style="margin-left:8px">Docs</span>
                 </a>
             </li>
             <li>
                 <a href="/">
-                    <i class='fab fa-jira'></i> <span class="tab-name">Jira</span>
+                    <i class='fab fa-jira'></i> <span class="tab-name" style="margin-left:8px">Jira</span>
                 </a>
             </li>
             <li>
                 <a href="/profile">
-                    <i class='far fa-user'></i> Profile
-                    {% if request.user.is_authenticated  %}
-                    <button  class="logout btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 80px; margin-top: 6px;">
-                    Log Out
-                </button>
-                    {% else %}
-                </a></br>
-                <button class="login btn btn-primary btn-sm float-right" type="button" name="button" style="margin-right: 80px; margin-top: 6px;">
-                    Log In
-                </button>
-                    <i class='far fa-user'></i> <span class="tab-name">Profile</span>
+                    <i class='far fa-user'></i> <span class="tab-name" style="margin-left:8px">Profile</span>
+                    <button  class="logout btn btn-primary btn-sm float-right" type="button" name="button" style="margin-top:6px; margin-right:50px">
+                    Log Out </button>
                 </a>
-            </li>
-            <li>
-                <button class="login btn btn-success btn-sm" type="button">
-                    Sign In
-                </button>
-                <button class="login signup btn btn-success btn-sm" type="button">
-                    Sign Up
-                </button>
-                {% endif %}
             </li>
         </ul>
     </div>
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content"></div>
-        </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
     <div id="page-content-wrapper">
         {% block content %}
         {% endblock %}
     </div>
+    {% else %}
+    {% csrf_token %}
+            <div class="auth">
+                </br>
+                <h3 class="authtext">Please sign in or sign up to continue </h3></br>
+                <div class="authbutton">
+                    <button class="login btn btn-success btn-sm" type="button"> Sign In </button></br>
+                    <button class="login signup btn btn-success btn-sm" type="button" > Sign Up </button>
+                </div>
+            </div>
+    {% endif %}
+
     <!-- /#page-content-wrapper -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
 </div>
 <!-- /#wrapper -->
-
 </body>
+
 </html>
 
 <script type="text/javascript">

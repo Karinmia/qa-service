@@ -1,11 +1,9 @@
 {% extends 'tasks/base.html' %}
-
+{% csrf_token %}
 {% block content %}
 <div class="list-group" id="tasks">
-    {% if not tasks %}
-        <p>Sorry, no tasks available.</p>
-    {% else %}
-        {% for task in tasks %}
+    {% for task in tasks %}
+        {% if task.author == request.user %}
         <div class="row task list-group-item">
             <div class="col-10 task-content">
                 <h4 id="{{ task.id }}" class="task-title expand" style="cursor: pointer;">{{ task.title }}</h4>
@@ -24,8 +22,8 @@
                 </button>
             </div>
         </div>
-        {% endfor %}
     {% endif %}
+    {% endfor %}
 </div>
 
 <script>

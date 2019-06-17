@@ -1,9 +1,17 @@
 {% extends 'tasks/base.html' %}
 {% load static %}
 {% block content %}
-<h3>
-    {{user.username}}
-
-</h3>
 {% csrf_token %}
+{% if request.user.is_authenticated  %}
+
+<h3>
+    Приффки, {{user.username}}!!
+</h3>
+
+{% else %}
+
+<h2>Sign in first</h2>
+
+{% endif %}
+
 {% endblock %}
