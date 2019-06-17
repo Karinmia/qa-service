@@ -1,0 +1,9 @@
+.field-titles {
+    font-weight: 600;
+}
+
+#cancel-btn {
+    border-radius: 30px;
+    color: white;
+    background-color: #337ab7;
+}

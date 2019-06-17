@@ -16,10 +16,10 @@
         </div>
         <div class="row">
             <div class="col-2">
-                <button type="button" class="integration btn btn-outline-info open-modal">Jira</button>
+                <button type="button" id="jira-modal" class="integration btn btn-outline-info open-modal">Jira</button>
             </div>
             <div class="col-2">
-                <button type="button" class="integration btn btn-outline-info open-modal">Confluence</button>
+                <button type="button" id="confluence-modal" class="integration btn btn-outline-info open-modal">Confluence</button>
             </div>
         </div>
     </div>
@@ -29,3 +29,26 @@
         <button type="submit" class="btn btn-success">Save</button>
     </div>
 </form>
+
+
+<!-- JIRA MODAL -->
+<div class="d-none modal-data" data-for="newTelegramBot">
+    <div data-type="header">
+        <h3>JIRA</h3>
+    </div>
+    <div data-type="body">
+        <form id="form-create-new-task-jira" class='post-form' method='POST' action='/create_task/'>
+            {% csrf_token %}
+            <button class='btn btn-primary' value='Submit' type='submit'>Save</button>
+            <button class='btn btn-primary' data-dismiss='modal'>Cancel</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+$(function () {
+    $("#jira-modal").modalForm({formURL: "{% url 'jira-modal' %}"});
+    $("#confluence-modal").modalForm({formURL: "{% url 'confluence-modal' %}"});
+});
+</script>

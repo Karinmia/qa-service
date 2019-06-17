@@ -37,8 +37,11 @@ def profile_edit(request, pk=None):
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             profile = form.save(commit=False)
+            profile.email = request.user.email
+            profile.username = request.user.username
             profile.save()
-            return redirect('get_profile', pk=profile.pk)
+            return redirect('get_profile')
+            # return redirect('get_profile', pk=profile.pk)
     else:
         form = ProfileForm(instance=profile)
 

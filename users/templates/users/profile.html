@@ -5,11 +5,14 @@
 {% csrf_token %}
 {% if request.user.is_authenticated  %}
 
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
 <div class="container">
     <div class="row">
-        <div class="col-10">
+        <div class="col-4">
+        </div>
+        <div class="col-4">
             <h3>
-                Hello, {{user.username}}!!
+                Hello, {{user.username}}!
             </h3>
         </div>
         <div class="col-2">
@@ -19,12 +22,12 @@
         </div>
     </div>
     <div class="row profile">
-        <div class="col-2" style="text-align: right;">
-            <p>Email:</p>
+        <div class="col-2 field-titles" style="text-align: right;">
+            <b><p>Email:</p>
             <p>Username:</p>
             <p>Password:</p>
             <p>Jira Login:</p>
-            <p>Jira Password:</p>
+            <p>Jira Password:</p></b>
         </div>
         <div class="col-9" style="text-align: left;">
             <p>{{ user.email }}</p>

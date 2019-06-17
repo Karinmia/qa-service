@@ -1,21 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+h1{
+    text-align: center;
+    color: #337ab7;
+    font-size: 80px;
+    font-family: 'Muli', sans-serif;
+    margin-top: 100px;
+}
 .auth {
     color: white;
     background: #337ab7;
     max-width: 400px;
     max-height: 300px;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 100px;
     border-radius: 25px;
-}
-
-.authtext{
+    font-family: 'Muli', sans-serif;
     text-align: center;
-    margin-top: 10px;
 }
 
-.authbutton{
+.auth-text{
+    padding-top: 20px;
+}
+
+.auth-button{
     text-align: center;
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
+    padding-bottom: 30px;
 }
