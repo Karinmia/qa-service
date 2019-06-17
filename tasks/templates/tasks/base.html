@@ -11,7 +11,7 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
           crossorigin="anonymous"
@@ -39,7 +39,7 @@
                 <a href="/">
                     <i class='fab fa-trello'></i> <span class="tab-name" style="margin-left:8px"> Tasks</span>
                 </a>
-                <button class="create-task btn btn-success btn-sm float-right" type="button" style='font-size:22px; margin-top: 8px; margin-right: 90px;'>
+                <button class="create-task btn btn-success btn-sm float-right" type="button" style="font-size:22px; margin-top: 6px; margin-right: 20px;">
                     <i class='fas fa-plus'></i>
                 </button>
             </li>
@@ -56,9 +56,15 @@
             <li>
                 <a href="/profile">
                     <i class='far fa-user'></i> <span class="tab-name" style="margin-left:8px">Profile</span>
+<<<<<<< HEAD
                     <button  class="logout btn btn-primary btn-sm float-right" type="submit" name="button" style="margin-top:6px; margin-right:50px">
                     Log Out </button>
+=======
+>>>>>>> d301a4a657bfb0b9a802f65294c53d3871841dce
                 </a>
+                <button class="logout btn btn-danger btn-sm float-right" type="button"style="font-size:18px; margin-right:20px">
+                    Log Out
+                </button>
             </li>
         </ul>
     </div>
@@ -67,23 +73,24 @@
         {% block content %}
         {% endblock %}
     </div>
-    {% else %}
-    {% csrf_token %}
-            <div class="auth">
-                </br>
-                <h3 class="authtext">Please sign in or sign up to continue </h3></br>
-                <div class="authbutton">
-                    <button class="login btn btn-success btn-sm" type="button"> Sign In </button></br>
-                    <button class="login signup btn btn-success btn-sm" type="button" > Sign Up </button>
-                </div>
-            </div>
-    {% endif %}
-
-    <!-- /#page-content-wrapper -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content"></div>
+</div>
+{% else %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% csrf_token %}
+    <div class="auth">
+        </br>
+        <h3 class="authtext">Please sign in or sign up to continue </h3></br>
+        <div class="authbutton">
+            <button class="login btn btn-success btn-sm" type="button"> Sign In </button></br>
+            <button class="login signup btn btn-success btn-sm" type="button" > Sign Up </button>
         </div>
+    </div>
+{% endif %}
+
+<!-- /#page-content-wrapper -->
+<div class="modal fade" tabindex="-1" role="dialog" id="modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
     </div>
 </div>
 <!-- /#wrapper -->

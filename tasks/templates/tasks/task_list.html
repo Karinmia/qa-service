@@ -1,9 +1,9 @@
 {% extends 'tasks/base.html' %}
 {% csrf_token %}
+
 {% block content %}
 <div class="list-group" id="tasks">
     {% for task in tasks %}
-        {% if task.author == request.user %}
         <div class="row task list-group-item">
             <div class="col-10 task-content">
                 <h4 id="{{ task.id }}" class="task-title expand" style="cursor: pointer;">{{ task.title }}</h4>
@@ -21,12 +21,11 @@
                 </div>
             </div>
             <div class="col" style="text-align: right; padding: 0;">
-                <button class="delete-task btn btn-outline-danger btn-sm" type="button" style='font-size:24px;' data-id="{% url 'delete_task' task.pk %}">
+                <button class="delete-task btn btn-outline-danger btn-sm" type="button" style='font-size:24px;' data-id="{% url 'delete_task' task.pk %}" data-toggle="tooltip" data-placement="left" title="Delete this task">
                     <i class='far fa-trash-alt'></i>
                 </button>
             </div>
         </div>
-    {% endif %}
     {% endfor %}
 </div>
 

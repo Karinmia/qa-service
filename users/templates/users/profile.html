@@ -1,12 +1,45 @@
 {% extends 'tasks/base.html' %}
 {% load static %}
+
 {% block content %}
 {% csrf_token %}
 {% if request.user.is_authenticated  %}
 
-<h3>
-    Приффки, {{user.username}}!!
-</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <h3>
+                Hello, {{user.username}}!!
+            </h3>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-info" href="{% url 'profile_edit'%}">
+                Edit
+            </a>
+        </div>
+    </div>
+    <div class="row profile">
+        <div class="col-2" style="text-align: right;">
+            <p>Email:</p>
+            <p>Username:</p>
+            <p>Password:</p>
+            <p>Jira Login:</p>
+            <p>Jira Password:</p>
+        </div>
+        <div class="col-9" style="text-align: left;">
+            <p>{{ user.email }}</p>
+            <p>{{ user.username }}</p>
+            <p>
+                <a class="btn btn-info" href="{% url 'profile_edit'%}" style="font-size: 14px; margin-top: -8px;">
+                    Change password
+                </a>
+            </p>
+            <p>{{ user.jira_login }}</p>
+            <p>{{ user.jira_password }}</p>
+        </div>
+    </div>
+</div>
+
 
 {% else %}
 

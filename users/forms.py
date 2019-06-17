@@ -1,8 +1,10 @@
-from django.contrib.auth.forms import UserCreationForm
-from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
-from .models import Profile
-from django.contrib.auth.forms import AuthenticationForm
+from django import forms
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+
+from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
+
+from .models import Profile
 
 class CustomCreationForm(PopRequestMixin, CreateUpdateAjaxMixin, UserCreationForm):
     class Meta:
@@ -22,3 +24,8 @@ class CustomAuthenticationForm(AuthenticationForm):
                   'password'
                   ]
 
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('jira_login', 'jira_password')
