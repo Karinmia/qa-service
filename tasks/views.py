@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from bootstrap_modal_forms.generic import BSModalDeleteView, BSModalUpdateView
-
+from django.contrib.auth import logout as logout_auth
 from .models import Task
 from . import forms
 
@@ -53,3 +53,4 @@ class TaskDone(BSModalUpdateView):
         form.save()
         print("DEBUG: success")
         return redirect(task_list)
+

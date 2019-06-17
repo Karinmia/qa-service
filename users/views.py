@@ -57,7 +57,6 @@ def profile_edit(request, pk=None):
     return render(request, 'users/profile_edit.html', {'form': form, 'action': action})
 
 
-
 def change_password(request):
     if request.method == "POST":
         form = PasswordChangeForm(data=request.POST, user=request.user)
