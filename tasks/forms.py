@@ -8,6 +8,10 @@ class TaskForm(BSModalForm):
                   'description'
                   ]
 
+class TaskCheck(BSModalForm):
+    class Meta:
+        model = Task
+        fields = []
 
 # from django import forms
 #
