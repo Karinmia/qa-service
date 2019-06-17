@@ -7,8 +7,8 @@ class Profile(models.Model):
     username = models.CharField(max_length=255)
     password = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=254, unique=True)
-    jira_id = models.CharField(max_length=100, blank=True)
-    confluence_id = models.CharField(max_length=100, blank=True)
+    jira_login = models.CharField(max_length=100, blank=True)
+    jira_password = models.CharField(max_length=50, blank=True)
     USERNAME_FIELD = 'username'
 
     def __str__(self):

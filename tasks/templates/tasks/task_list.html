@@ -1,5 +1,6 @@
 {% extends 'tasks/base.html' %}
 {% csrf_token %}
+
 {% block content %}
 <div class="list-group" id="tasks">
     {% for task in tasks %}
